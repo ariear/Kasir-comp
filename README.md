@@ -29,8 +29,7 @@ Penjualan
 ![penjualankasir](https://user-images.githubusercontent.com/91861324/163503369-3ea99fa2-4c1e-45f3-a7ae-99e3ef92ab7b.png)
 
 Setelah Meng klik Bayar , maka akan muncul invoice / Struk
-
-Invoice/Struk (Tinggal klik ctrl + p , terus klik print hehe)
+(Lalu Tinggal klik ctrl + p , terus klik print hehe)
 ![invoicekasir](https://user-images.githubusercontent.com/91861324/163503536-c673e78b-82b6-477e-8e92-e4c510622580.png)
 
 
