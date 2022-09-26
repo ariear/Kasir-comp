@@ -10,7 +10,7 @@ Teknologi yang di pakai
 
 Berikut Screenshoot an project ini
 
-Tampilan Login (Maaf jelek , lagi laper hehe)
+Tampilan Login (Maaf jelek banh hehe)
 ![loginkasir](https://user-images.githubusercontent.com/91861324/163503115-c70f4b2b-06aa-44d7-8985-e3f29dbcfcb7.png)
 
 Tampilan Overview
