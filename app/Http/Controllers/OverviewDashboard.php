@@ -11,7 +11,7 @@ use Carbon\Carbon;
 class OverviewDashboard extends Controller
 {
     public function index(){
-        $jmlstock = null;
+        $jmlstock = 0;
         $barang = Barang::all();
         foreach ($barang as $key ) {
             $jmlstock += $key->stock;
@@ -22,7 +22,7 @@ class OverviewDashboard extends Controller
             'barang' => Barang::all()->count(),
             'category' => Category::all()->count(),
             'barangs' => Barang::where('stock', '<',4)->get(),
-            'terjual_bulan_ini' => Order::whereDate('created_at', '=' , Carbon::today()->toDateString())->count()
+            'terjual_hari_ini' => Order::whereDate('created_at', '=' , Carbon::today()->toDateString())->count()
         ]);
     }
 }

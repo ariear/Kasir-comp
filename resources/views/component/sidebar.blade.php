@@ -1,8 +1,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-      <img src="{{ asset('AdminLte/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">Kasir Comp</span>
+    <a href="/dashboard" class="brand-link">
+      <span class="brand-text font-weight-bold ml-2">Kasir Comp</span>
     </a>
 
     <!-- Sidebar -->
@@ -38,6 +37,14 @@
               <i class="nav-icon fas fa-box"></i>
               <p>
                 Kategori
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/dashboard/reports" class="nav-link {{ Request::is('dashboard/reports*') ? "active" : '' }}">
+              <i class="nav-icon fas fa-newspaper"></i>
+              <p>
+                Laporan
               </p>
             </a>
           </li>

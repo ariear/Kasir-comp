@@ -40,14 +40,14 @@
     <!-- small card -->
     <div class="small-box bg-warning">
       <div class="inner">
-        <h3>{{ $terjual_bulan_ini }}</h3>
+        <h3>{{ $terjual_hari_ini }}</h3>
 
-        <p>Terjual Bulan Ini</p>
+        <p>Terjual Hari Ini</p>
       </div>
       <div class="icon">
         <i class="fas fa-shopping-cart"></i>
       </div>
-      <a href="#" class="small-box-footer">
+      <a href="/dashboard/reports" class="small-box-footer">
         More info <i class="fas fa-arrow-circle-right"></i>
       </a>
     </div>

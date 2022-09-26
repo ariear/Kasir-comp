@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\KasirController;
 use App\Http\Controllers\OverviewDashboard;
 use App\Http\Controllers\PenjualanController;
+use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -22,4 +23,6 @@ Route::resource('/dashboard/categories', CategoryController::class)->middleware(
 
 Route::get('/dashboard/penjualan', [PenjualanController::class,'index'])->middleware('auth');
 
-Route::get('/dashboard/penjualan/invoice/{no_order}', [KasirController::class,'invoice']);
+Route::get('/dashboard/penjualan/invoice/{no_order}', [KasirController::class,'invoice'])->middleware('auth');
+
+Route::get('/dashboard/reports',[ReportController::class,'index'])->middleware('auth');
