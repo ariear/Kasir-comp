@@ -26,6 +26,13 @@ class ComponentPenjualan extends Component
         $this->resetPage();
     }
 
+    public function updated()
+    {
+        if ($this->pembayaran == '') {
+            redirect('/dashboard/penjualan');
+        }
+    }
+
     public function addtocart($barang){
         $penjualan = Penjualan::all();
         foreach ($penjualan as $key => $value) {

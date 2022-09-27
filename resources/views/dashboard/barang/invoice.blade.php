@@ -91,8 +91,8 @@
         </div>
         @foreach ($order->barangOrder as $item)
             <div class="flex-container" style="text-align: right;">
-                <div style="text-align: left;">{{ $item->qty }}x {{ $item->barang->nama_barang }}</div>
-                <div>Rp {{ number_format($item->barang->harga_jual) }} </div>
+                <div style="text-align: left;">{{ $item->qty }}x {{ $item->barang ? $item->barang->nama_barang : '???' }}</div>
+                <div>Rp {{ $item->barang ? number_format($item->barang->harga_jual) : '???' }} </div>
                 <div>Rp {{ number_format($item->total) }} </div>
             </div>
         @endforeach

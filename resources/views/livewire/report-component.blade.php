@@ -16,9 +16,9 @@
               <th>NO</th>
               <th>NO ORDER</th>
               <th>NAMA KASIR</th>
-              <th>BAYAR</th>
-              <th>KEMBALIAN</th>
+              <th>QTY</th>
               <th>TOTAL</th>
+              <th>BAYAR</th>
               <th>AKSI</th>
             </tr>
             </thead>
@@ -28,9 +28,9 @@
               <th class="font-weight-normal">{{ $loop->iteration }}</th>
               <th class="font-weight-normal">{{ $order->no_order }}</th>
               <th class="font-weight-normal">{{ $order->nama_kasir }}</th>
-              <th class="font-weight-normal">{{ number_format($order->pembayaran) }}</th>
-              <th class="font-weight-normal">{{ number_format($order->kembalian) }}</th>
+              <th class="font-weight-normal">{{ $order->barangOrder->sum('qty') }}</th>
               <th class="font-weight-normal">{{ number_format($order->grand_total) }}</th>
+              <th class="font-weight-normal">{{ number_format($order->pembayaran) }}</th>
               <th>
                 <a href="/dashboard/penjualan/invoice/{{ $order->no_order }}" class="btn btn-primary"><i class="fas fa-print"></i></a>
               </th>
@@ -46,9 +46,9 @@
                     <th>NO</th>
                     <th>NO ORDER</th>
                     <th>NAMA KASIR</th>
-                    <th>BAYAR</th>
-                    <th>KEMBALIAN</th>
+                    <th>QTY</th>
                     <th>TOTAL</th>
+                    <th>BAYAR</th>
                     <th>AKSI</th>
                   </tr>
             </tfoot>

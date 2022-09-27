@@ -129,7 +129,7 @@
                   Pembayaran
                 </td>
                 <td>
-                  <input type="number" wire:model="pembayaran">
+                  <input type="number" value="{{ $pembayaran }}" wire:model="pembayaran">
                 </td>
               </tr>
               <tr>
@@ -141,7 +141,7 @@
                   Kembalian
                 </td>
                 <td>
-                    @if ($pembayaran != '')
+                    @if ($pembayaran != 0)
                     Rp. {{ number_format($pembayaran - $keranjangs->sum('total')) }}
                     @endif
                 </td>
@@ -153,7 +153,7 @@
                 <td></td>
                 <td></td>
                 <td>
-                    <button class="btn btn-primary" wire:click="transaction">Bayar</button>
+                    <button class="btn btn-primary" @if (($pembayaran - $keranjangs->sum('total')) < 0 ) disabled @endif wire:click="transaction">Bayar</button>
                 </td>
               </tr>
             </tfoot>
