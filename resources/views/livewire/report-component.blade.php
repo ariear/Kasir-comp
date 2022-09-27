@@ -43,13 +43,13 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <th>NO</th>
-                    <th>NO ORDER</th>
-                    <th>NAMA KASIR</th>
-                    <th>QTY</th>
-                    <th>TOTAL</th>
-                    <th>BAYAR</th>
-                    <th>AKSI</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th>TOTAL : {{ number_format($orders->sum('grand_total')) }}</th>
+                    <th></th>
+                    <th></th>
                   </tr>
             </tfoot>
           </table>
