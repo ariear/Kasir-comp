@@ -39,9 +39,6 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-
-  <!-- Main Footer -->
-  @include('component.footer')
 </div>
 <!-- ./wrapper -->
 
