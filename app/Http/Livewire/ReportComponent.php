@@ -21,6 +21,7 @@ class ReportComponent extends Component
 
         return view('livewire.report-component',[
             'title_date' => $title_date,
+            'dateCompare' => $dateCompare,
             'orders' => Order::with('barangOrder')->whereDate('created_at','=', $dateCompare)->get()
         ]);
     }

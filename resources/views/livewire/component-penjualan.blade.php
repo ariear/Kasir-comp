@@ -43,6 +43,29 @@
                   <td>Rp. {{ number_format($barang->harga_jual) }}</td>
                   <td>
                       <button class="btn btn-warning" wire:click="addtocart({{ $barang }})" ><i class="fas fa-shopping-cart"></i></button>
+                      {{-- <button class="btn btn-warning" data-toggle="modal" data-target="#modal-default" ><i class="fas fa-shopping-cart"></i></button> --}}
+
+                      <div class="modal fade" id="modal-default">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h4 class="modal-title">Masukkan jumlah barang yang mau dibeli</h4>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <input type="number" class="form-control" >
+                            </div>
+                            <div class="modal-footer justify-content-between">
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+                              <button type="submit" class="btn btn-primary" wire:click="addtocart({{ $barang }})" >Tambah ke keranjang</button>
+                            </div>
+                          </div>
+                          <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                      </div>
                   </td>
                 </tr>
                 @empty

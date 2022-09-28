@@ -18,6 +18,7 @@ class ComponentPenjualan extends Component
     public $search;
     public $pembayaran;
     public $grand_total;
+    public $qtyvalue;
 
     protected $queryString = ['search'];
 
@@ -26,11 +27,15 @@ class ComponentPenjualan extends Component
         $this->resetPage();
     }
 
-    public function updated()
+    public function updatedPembayaran()
     {
         if ($this->pembayaran == '') {
             redirect('/dashboard/penjualan');
         }
+    }
+
+    public function updated(){
+
     }
 
     public function addtocart($barang){

@@ -4,7 +4,8 @@
     <div class="card">
         <div class="card-header">
           <h3 class="card-title">Daftar laporan</h3>
-          <div class="card-tools">
+          <div class="card-tools d-flex">
+              <a href="/dashboard/reports/print/{{ $dateCompare }}" class="btn btn-primary mr-3">CETAK</a>
               <input type="date" class="form-control" wire:model="dateReport" id="">
           </div>
         </div>

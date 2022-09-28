@@ -17,33 +17,66 @@
   <link rel="stylesheet" href="{{ asset('AdminLte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
   <link rel="stylesheet" href="{{ asset('AdminLte/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-
-    <!-- SweetAlert2 -->
-    <link rel="stylesheet" href="{{ asset('AdminLte/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
-    <!-- Toastr -->
-    <link rel="stylesheet" href="{{ asset('AdminLte/plugins/toastr/toastr.min.css') }}">
   @livewireStyles
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
 
-  <!-- Navbar -->
-    @include('component.navbar')
-  <!-- /.navbar -->
+    <div class="card">
+        <div class="card-header">
+          <h4>Laporan Tanggal {{ $date }}</h4>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+          <table  class="table table-bordered table-striped">
+            <thead>
+            <tr>
+              <th>NO</th>
+              <th>NO ORDER</th>
+              <th>NAMA KASIR</th>
+              <th>BARANG</th>
+              <th>QTY</th>
+              <th>TOTAL</th>
+              <th>BAYAR</th>
+            </tr>
+            </thead>
+            <tbody>
+            @forelse ($orders as $order)
+            <tr>
+              <th class="font-weight-normal">{{ $loop->iteration }}</th>
+              <th class="font-weight-normal">{{ $order->no_order }}</th>
+              <th class="font-weight-normal">{{ $order->nama_kasir }}</th>
+              <th class="font-weight-normal">
+                @foreach ($order->barangOrder as $item)
+                    <li>{{ $item->barang ? $item->barang->nama_barang : '???' }}</li>
+                @endforeach
+              </th>
+              <th class="font-weight-normal">{{ $order->barangOrder->sum('qty') }}</th>
+              <th class="font-weight-normal">{{ number_format($order->grand_total) }}</th>
+              <th class="font-weight-normal">{{ number_format($order->pembayaran) }}</th>
+            </tr>
+            @empty
+                <tr>
+                    <td>Transaksi tidak ada</td>
+                </tr>
+            @endforelse
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th>TOTAL : {{ number_format($orders->sum('grand_total')) }}</th>
+                    <th></th>
+                  </tr>
+            </tfoot>
+          </table>
+        </div>
+        <!-- /.card-body -->
+      </div>
 
-  <!-- Main Sidebar Container -->
-    @include('component.sidebar')
-
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-
-    <!-- Main content -->
-    <div class="content">
-        @yield('content')
-    </div>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
 </div>
 <!-- ./wrapper -->
 
@@ -51,10 +84,6 @@
 <script src="{{ asset('AdminLte/plugins/jquery/jquery.min.js') }}"></script>
 <script src="{{ asset('AdminLte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('AdminLte/dist/js/adminlte.min.js') }}"></script>
-<!-- SweetAlert2 -->
-<script src="{{ asset('AdminLte/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
-<!-- Toastr -->
-<script src="{{ asset('AdminLte/plugins/toastr/toastr.min.js') }}"></script>
 
 <!-- DataTables  & Plugins -->
 <script src="/AdminLte/plugins/datatables/jquery.dataTables.min.js"></script>
@@ -85,6 +114,10 @@
       "responsive": true,
     });
   });
+
+  window.addEventListener('DOMContentLoaded', (event) => {
+   		window.print()
+	});
 </script>
 </body>
 </html>
