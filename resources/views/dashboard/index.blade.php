@@ -69,6 +69,9 @@
 <script src="/AdminLte/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="/AdminLte/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="/AdminLte/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
+<script src="/AdminLte/plugins/sweetalert2/sweetalert2.js"></script>
+
 <script>
   $(function () {
     $("#example1").DataTable({
@@ -86,5 +89,6 @@
     });
   });
 </script>
+@stack('scripts')
 </body>
 </html>

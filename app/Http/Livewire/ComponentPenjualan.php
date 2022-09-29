@@ -38,23 +38,23 @@ class ComponentPenjualan extends Component
 
     }
 
-    public function addtocart($barang){
+    public function addtocart($id,$harga_jual,$inputqty){
         $penjualan = Penjualan::all();
         foreach ($penjualan as $key => $value) {
-            if ($value->barang->id == $barang['id']) {
+            if ($value->barang->id == $id) {
                 session()->flash('message', 'Barang sudah ada di keranjang');
                 return true;
             }
         }
         Penjualan::create([
-            'barang_id' => $barang['id'],
-            'qty' => 1,
-            'total' => $barang['harga_jual']
+            'barang_id' => $id,
+            'qty' => $inputqty,
+            'total' => $harga_jual * $inputqty
         ]);
 
-        $cuyustock = Barang::find($barang['id']);
+        $cuyustock = Barang::find($id);
         $cuyustock->update([
-            'stock' => $cuyustock->stock - 1
+            'stock' => $cuyustock->stock - $inputqty
         ]);
 
     }

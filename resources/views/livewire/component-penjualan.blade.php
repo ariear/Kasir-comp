@@ -42,30 +42,7 @@
                   <td>{{ $barang->stock }}</td>
                   <td>Rp. {{ number_format($barang->harga_jual) }}</td>
                   <td>
-                      <button class="btn btn-warning" wire:click="addtocart({{ $barang }})" ><i class="fas fa-shopping-cart"></i></button>
-                      {{-- <button class="btn btn-warning" data-toggle="modal" data-target="#modal-default" ><i class="fas fa-shopping-cart"></i></button> --}}
-
-                      <div class="modal fade" id="modal-default">
-                        <div class="modal-dialog">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h4 class="modal-title">Masukkan jumlah barang yang mau dibeli</h4>
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
-                            </div>
-                            <div class="modal-body">
-                              <input type="number" class="form-control" >
-                            </div>
-                            <div class="modal-footer justify-content-between">
-                              <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-                              <button type="submit" class="btn btn-primary" wire:click="addtocart({{ $barang }})" >Tambah ke keranjang</button>
-                            </div>
-                          </div>
-                          <!-- /.modal-content -->
-                        </div>
-                        <!-- /.modal-dialog -->
-                      </div>
+                      <button class="btn btn-warning" onclick="defineqty('{{ $barang->id }}','{{ $barang->harga_jual }}','{{ $barang->stock }}','{{ $barang->nama_barang }}')" ><i class="fas fa-shopping-cart"></i></button>
                   </td>
                 </tr>
                 @empty
@@ -185,3 +162,35 @@
   </div>
 
 </div>
+
+@push('scripts')
+<script>
+
+const defineqty = (id,harga_jual,stock,nama_barang) => {
+    Swal.fire({
+      title: `Masukkan jumlah ${nama_barang} yang mau dibeli`,
+      position: 'top',
+      input: 'number',
+      inputAttributes: {
+        autocapitalize: 'off'
+      },
+      showCancelButton: true,
+      confirmButtonText: 'Tambah ke keranjang',
+      cancelButtonText: 'Batal',
+      showLoaderOnConfirm: true,
+      preConfirm: (inputqty) => {
+        if (inputqty > 0 && inputqty <= stock) {
+            @this.addtocart(id,harga_jual,inputqty)
+        }else{
+            Swal.fire({
+            icon: 'error',
+            position: 'top',
+            title: 'Oops...',
+            text: 'Sepertinya input belum di isi / stock tidak mencukupi!'
+        })
+        }
+      }
+    })
+}
+</script>
+@endpush
