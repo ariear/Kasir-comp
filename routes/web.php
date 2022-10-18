@@ -27,3 +27,4 @@ Route::get('/dashboard/penjualan/invoice/{no_order}', [KasirController::class,'i
 
 Route::get('/dashboard/reports',[ReportController::class,'index'])->middleware('auth');
 Route::get('/dashboard/reports/print/{date}',[ReportController::class,'print'])->middleware('auth');
+Route::get('/dashboard/reports/month',[ReportController::class,'reportMonth'])->middleware('auth');

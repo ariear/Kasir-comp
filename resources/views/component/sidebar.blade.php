@@ -41,13 +41,28 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/dashboard/reports" class="nav-link {{ Request::is('dashboard/reports*') ? "active" : '' }}">
-              <i class="nav-icon fas fa-newspaper"></i>
-              <p>
-                Laporan
-              </p>
-            </a>
-          </li>
+<a href="#" class="nav-link {{ Request::is('dashboard/reports*') ? "active" : '' }}">
+<i class="nav-icon fas fa-newspaper"></i>
+<p>
+Laporan
+<i class="fas fa-angle-left right"></i>
+</p>
+</a>
+<ul class="nav nav-treeview">
+<li class="nav-item">
+<a href="/dashboard/reports" class="nav-link {{ Request::is('dashboard/reports*') && !Request::is('dashboard/reports/month') ? "active" : '' }}">
+<i class="far fa-circle nav-icon"></i>
+<p>Harian</p>
+</a>
+</li>
+<li class="nav-item">
+<a href="/dashboard/reports/month" class="nav-link {{ Request::is('dashboard/reports/month') ? "active" : '' }}">
+<i class="far fa-circle nav-icon"></i>
+<p>Bulanan</p>
+</a>
+</li>
+</ul>
+</li>
           <li class="nav-item">
             <a href="/dashboard/penjualan" class="nav-link {{ Request::is('dashboard/penjualan*') ? "active" : '' }}">
               <i class="nav-icon fas fa-money-bill-wave"></i>

@@ -24,7 +24,7 @@
 
     <div class="card">
         <div class="card-header">
-          <h4>Laporan Tanggal {{ $date }}</h4>
+          <h4>{{ $title }}</h4>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
